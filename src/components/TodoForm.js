@@ -24,7 +24,7 @@ submitForm = e => {
 
 render() {
     return(
-        <form>
+        <form onSubmit={this.submitForm}>
             <input 
             onChange={this.handleChanges}
             type="text"

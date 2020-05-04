@@ -30,7 +30,7 @@ class App extends React.Component {
   //methods
   addItem = itemName => {
     const newItem = {
-      name: itemName,
+      task: itemName,
       id: Date.now(),
       completed: false
     }
@@ -44,7 +44,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo List!</h2>
-        <ToDoList toDo={this.state.toDo} />
+        <ToDoList toDo={this.state.toDo} addItem={this.addItem}/>
         <ToDoForm todo={this.state.todo} addItem={this.addItem}/>
       </div>
     );
