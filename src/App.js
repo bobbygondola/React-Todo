@@ -1,19 +1,15 @@
 import React from 'react';
 import ToDoList from './components/TodoList'
 import ToDoForm from './components/TodoForm'
-//dummyData
 
+
+//dummyData
 const toDo = [
   {
     task: 'Organize Garage',
-    id: 1528817077286,
+    id: Math.floor(Math.random() * 24 + 1),
     completed: false
   },
-  {
-    task: 'Bake Cookies',
-    id: 1528817084358,
-    completed: false
-  }
 ];
 
 class App extends React.Component {
@@ -24,6 +20,7 @@ class App extends React.Component {
     super();
     this.state = {
       toDo,
+
     }
   }
 
@@ -31,7 +28,7 @@ class App extends React.Component {
   addItem = itemName => {
     const newItem = {
       task: itemName,
-      id: Date.now(),
+      id: Math.floor(Math.random() * 24 + 1),
       completed: false
     }
     this.setState({
@@ -39,12 +36,36 @@ class App extends React.Component {
     });
   }
 
+  //toggle todo
+  toggleItem = clickedId => {
+    //no mutating
+    //must create new
+		const newToDoList = this.state.toDo.map((item) => {
+      //loop through
+      //find item we clicked (maybe index)
+      //toggle items (completed) property
+			if (item.id === clickedId) {
+        //toggle completed
+				return {
+					...item,
+					completed: !item.completed
+				};
+			} else {
+				return item;
+			}
+    });
+
+		this.setState({
+			toDo: newToDoList
+		});
+	};
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo List!</h2>
-        <ToDoList toDo={this.state.toDo} addItem={this.addItem}/>
+        {/* <Todo /> */}
+        <ToDoList toDo={this.state.toDo} addItem={this.addItem} toggleItem={this.toggleItem} />
         <ToDoForm todo={this.state.todo} addItem={this.addItem}/>
       </div>
     );

@@ -1,10 +1,9 @@
 import React from 'react'
-import { render } from '@testing-library/react';
 
 class ToDoForm extends React.Component {
     constructor(){
         super();
-        this.state ={
+        this.state = {
             keyword: '',
         }
     }

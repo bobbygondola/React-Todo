@@ -7,9 +7,10 @@ const ToDoList = props => {
     return (
         <div className = "toDoList">
             {props.toDo.map(item => (
-                <Todo key={item.id} item={item} />
+                <Todo key={item.id} item={item}  toggleItem={props.toggleItem}/>
             ))}
             <button className="clearBtn">Clear</button>
+
         </div>
     )
 }
